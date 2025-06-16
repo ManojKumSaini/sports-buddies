@@ -4,3 +4,8 @@ scikit-learn
 numpy
 matplotlib
 seaborn
+spotipy
+streamlit
+cryptography
+python-dotenv
+requests
