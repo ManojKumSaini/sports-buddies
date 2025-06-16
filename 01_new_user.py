@@ -6,6 +6,21 @@ import hashlib
 import requests
 import psycopg2
 from datetime import datetime
+import json
+
+dim_tables = [
+    "dim_facebook",
+    "dim_github",
+    "dim_health",
+    "dim_instagram",
+    "dim_linkedin",
+    "dim_pinterest",
+    "dim_spotify",
+    "dim_steam",
+    "dim_strava",
+    "dim_twitter"
+]
+
 
 # ----------- DB Login lesen ------------
 def read_db_credentials(path="data/config.txt"):
@@ -74,6 +89,16 @@ def submit():
         user_id
     ]
 
+    from datetime import datetime
+
+    f = open("data/event_data.json", "r", encoding="utf-8")
+    event_data = json.load(f)
+    f.close()
+
+
+    data_time_stamp = event_data["payload"]["timestamp"]
+
+
     # Prüfen auf leere Felder
     if any(field.strip() == "" for field in data):
         messagebox.showwarning("Missing Info", "Please fill in all fields.")
@@ -91,24 +116,65 @@ def submit():
         cur = conn.cursor()
 
         # Prüfen, ob user_id schon existiert
-        cur.execute("SELECT user_id FROM users WHERE user_id = %s", (user_id,))
+        cur.execute("SELECT user_id FROM dim_user WHERE user_id = %s", (user_id,))
         if cur.fetchone() is None:
             # Nächste user_number ermitteln
-            cur.execute("SELECT MAX(user_number) FROM users")
+            cur.execute("SELECT MAX(user_number) FROM dim_user")
             result = cur.fetchone()
             next_number = 1 if result[0] is None else result[0] + 1
+            data_time_stamp = event_data["payload"]["timestamp"]
 
-            # Einfügen
             cur.execute(
-                "INSERT INTO users (user_number, user_id, creation_time) VALUES (%s, %s, %s)",
+                "INSERT INTO dim_user (user_number, user_id, creation_time) VALUES (%s, %s, %s)",
                 (next_number, user_id, datetime.now())
             )
+            
+            for table in dim_tables:
+                    # Nur user_number einfügen – andere Spalten bleiben NULL
+                    cur.execute(f"INSERT INTO {table} (user_number) VALUES (%s)", (next_number,))
+             
+
+            rdi_n = 1
+
+            for source_name, snipped_of_event_data in event_data["payload"].items():
+                if source_name == "timestamp":
+                    continue
+
+                # JSON-Teil in String umwandeln
+                raw_json_str = json.dumps(snipped_of_event_data)
+                rdi = f"{next_number}-{rdi_n}"
+                rdi_n = rdi_n + 1
+                # Insert ausführen
+                cur.execute(
+                    "INSERT INTO fact_raw_data (raw_data_id, user_number, data_source, extraction_time, raw_json) VALUES (%s, %s, %s, %s, %s)",
+                    (rdi, next_number, source_name, data_time_stamp, raw_json_str)
+                )
+                
+
+            
             conn.commit()
         cur.close()
         conn.close()
+    
+        creds = read_db_credentials(path= "data/config_raw.txt")
+        print(creds)
+        conn = connect_to_db(creds)
+        cur = conn.cursor()
+
+        raw_json_str = json.dumps(event_data)
+        cur.execute(
+                "INSERT INTO data_dump (user_id, dumping_time, data_dump) VALUES (%s, %s, %s)",
+                (user_id, data_time_stamp ,raw_json_str)
+        )
+        
+        conn.commit()
+        cur.close()
+        conn.close()
+    
     except Exception as e:
         messagebox.showerror("Database Error", f"Could not sync with DB:\n{e}")
         return
+
 
     messagebox.showinfo("Success", "Data saved successfully.")
     for entry in entries:
