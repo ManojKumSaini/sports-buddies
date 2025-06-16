@@ -4,3 +4,7 @@ scikit-learn
 numpy
 matplotlib
 seaborn
+requests
+psycopg2-binary
+
+
