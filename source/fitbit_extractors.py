@@ -1,8 +1,7 @@
 from flask import Flask, redirect, request, session, jsonify
 import requests, urllib.parse, os, base64
-from datetime import datetime
 from datetime import datetime, timedelta
-
+import json
 
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev_secret")
@@ -52,13 +51,9 @@ def callback():
     session['access_token'] = response.json().get('access_token')
     return redirect('/fitbit_data')
 
-
 def get_fitbit_headers():
     token = session.get('access_token')
     return {'Authorization': f'Bearer {token}'} if token else None
-
-
-from datetime import datetime, timedelta
 
 @app.route('/fitbit_data')
 def fitbit_data():
@@ -138,9 +133,19 @@ def fitbit_data():
             })
     result['activity_history'] = history
 
-    return jsonify(result)
+    # --- Save result to file ---
+    user_data_dir = os.path.join(os.path.dirname(__file__), "..", "user_data")
+    os.makedirs(user_data_dir, exist_ok=True)
 
+    encoded_id = result['profile'].get('encoded_id', 'unknown_user')
+    filename = os.path.join(user_data_dir, f"fitbit_profile_{encoded_id}.json")
+
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(result, f, indent=4)
+
+    print(f"✅ Fitbit profile saved to '{filename}'")
+
+    return jsonify(result)
 
 if __name__ == '__main__':
     app.run(debug=True)
-

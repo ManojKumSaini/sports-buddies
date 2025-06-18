@@ -16,7 +16,3 @@ __pycache__/
 # 
 requirements.txt
 .DS_Store
-
-# Ignore all files inside user_data/ but keep the folder
-user_data/*
-!user_data/.gitkeep
