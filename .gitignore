@@ -12,7 +12,11 @@ __pycache__/
 # Editor-/IDE-spezifisches
 .vscode/
 .idea/
-# Log-Dateien
+
+# 
 requirements.txt
-.env
 .DS_Store
+
+# Ignore all files inside user_data/ but keep the folder
+user_data/*
+!user_data/.gitkeep
