@@ -198,5 +198,3 @@ python merging_data.py
 ```
 
 - Merged output will be saved to the `data/` folder as `event_output.json`.
-
-
