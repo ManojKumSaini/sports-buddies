@@ -5,6 +5,7 @@
 
 # gesamte Daten (inkl. Unterordner und Dateien)
 /data/
+/user_data/
 
 # Bytecode und temporäres
 __pycache__/
