@@ -15,5 +15,8 @@ pymupdf
 python-dateutil
 fastapi
 uvicorn
+httpx
+
+
 
 

@@ -44,6 +44,12 @@ def transform_to_event_data(merged_data):
     if 'github' in merged_data:
         payload['github'] = merged_data['github']
 
+    if 'health' in merged_data:
+        payload['health'] = merged_data['health']
+
+    if 'strava' in merged_data:
+        payload['strava'] = merged_data['strava']
+
 
     # Add timestamp
     payload["timestamp"] = datetime.now().isoformat()
@@ -57,7 +63,7 @@ def transform_to_event_data(merged_data):
     }
 
 def load_json_files(folder_path):
-    ALLOWED_PREFIXES = ['spotify', 'linkedin', 'fitbit', 'github', 'facebook', 'strava', 'steam']
+    ALLOWED_PREFIXES = ['spotify', 'linkedin', 'fitbit', 'github', 'facebook', 'strava', 'steam',"health"]
     merged_data = {'name': None, 'email': None}
     for filename in os.listdir(folder_path):
         if filename.endswith('.json'):
