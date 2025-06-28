@@ -117,7 +117,7 @@ def submit():
 
         # Prüfen, ob user_id schon existiert
         cur.execute("SELECT user_id FROM dim_user WHERE user_id = %s", (user_id,))
-        if cur.fetchone() is None:
+        if True:#cur.fetchone() is None:
             # Nächste user_number ermitteln
             cur.execute("SELECT MAX(user_number) FROM dim_user")
             result = cur.fetchone()
