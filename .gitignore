@@ -1,5 +1,6 @@
 # virtuelle Umgebung
 .venv/
+.env
 
 
 # gesamte Daten (inkl. Unterordner und Dateien)
