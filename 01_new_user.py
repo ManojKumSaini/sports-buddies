@@ -72,6 +72,7 @@ def submit():
         entry_birth_place.get() +
         entry_birth_date.get() +
         entry_email.get()
+
     ).encode("utf-8")
     user_id = hashlib.sha256(hash_input).hexdigest()
 
