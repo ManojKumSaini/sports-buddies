@@ -1,7 +1,29 @@
-/data/
+
+
 *.json
 .DS_Store
 /tmp/
 /user_data/
 *secret*
 /images/charts/
+# virtuelle Umgebung
+.venv/
+.env
+
+
+# gesamte Daten (inkl. Unterordner und Dateien)
+/data/
+
+
+# Bytecode und temporäres
+__pycache__/
+*.pyc
+
+# Editor-/IDE-spezifisches
+.vscode/
+.idea/
+
+# 
+requirements.txt
+
+

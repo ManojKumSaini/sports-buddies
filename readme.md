@@ -84,3 +84,107 @@ This will open a **Tkinter input form**:
   - a `creation_time` timestamp
 
 ![DB](images/DB_users.png)
+
+
+
+
+# 📄 Data Extraction & Merging Instructions
+
+## 🚀 Getting Started
+
+1. **Open your terminal** and navigate to the project directory:
+
+```bash
+cd path/to/your/project/folder
+```
+
+> Replace `path/to/your/project/folder` with the actual location where you've cloned or downloaded the project.
+
+for example cd "C:\Users\manoj\Downloads\HWR Berlin Projects\BPI\Sports-buddies\sports-buddies"
+
+---
+
+## 📂 All extraction scripts are located in the `./source` folder.
+
+---
+
+## 1️⃣ Fitbit Extraction
+
+```bash
+cd source
+python fitbit_extractors.py
+```
+
+- A browser window will open for you to **authenticate with your Google (Fitbit) account**.
+- Data will be saved in the `user_data/` folder.
+
+---
+
+## 2️⃣ Spotify Extraction
+
+```bash
+cd source
+uvicorn spotify_extractor:app --reload
+```
+
+- A local server will start.
+- Open the link in your browser and log in with your **Spotify account**.
+- Data will be saved in the `user_data/` folder.
+
+---
+
+## 3️⃣ GitHub Extraction
+
+```bash
+cd source
+python github_extractor.py
+```
+
+- Enter your **GitHub username** when prompted.
+- Data will be saved in the `user_data/` folder.
+
+---
+
+## 4️⃣ LinkedIn Extraction
+
+```bash
+cd source
+streamlit run linkedin_extractor.py
+```
+
+- Upload your **LinkedIn profile PDF** (not CSV).
+- To download:
+  - Go to your LinkedIn profile → **More** → **Save to PDF**
+- Extracted data will be saved in the `user_data/` folder.
+
+---
+
+## 🔄 Merging All Files
+
+Before running the merge step:
+
+- Ensure **all data files** are in the `user_data/` folder.
+- Each file should be prefixed with the app name, e.g., `spotify_profile.json`, `github_data.json`, etc.
+
+If you're adding support for a **new application**:
+
+1. Open `merging_data.py`
+2. Find and update this section:
+
+```python
+if 'application_name' in merged_data:
+    payload['application_name'] = merged_data['application_name']
+```
+3. Also add `'application_name'` to `ALLOWED_PREFIXES`.
+
+---
+
+## ✅ Run the Merge
+
+```bash
+cd source
+python merging_data.py
+```
+
+- Merged output will be saved to the `data/` folder as `event_output.json`.
+
