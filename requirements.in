@@ -4,19 +4,11 @@ scikit-learn
 numpy
 matplotlib
 seaborn
-spotipy
-streamlit
-cryptography
-python-dotenv
 requests
-spotify
 psycopg2-binary
 pymupdf 
 python-dateutil
 fastapi
 uvicorn
-httpx
-
-
 
 
