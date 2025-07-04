@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Health Profile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: none;
+      color: #2c3e50;
+      margin: 0;
+      padding: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hintergrundbild */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("../images/backgrounds/background_health.png") no-repeat center center;
+      background-size: cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 794px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #015cb7;
+      border-bottom: 1px solid #c8e6c9;
+      margin-bottom: 1rem;
+    }
+    
+    .white-card {
+      background: #fff;
+      padding: 0.5rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+
+    .image-table.icon-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+    .chart-card {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 120px; /* feste Höhe für Gleichstand */
+      padding: 0.5rem;
+      box-sizing: border-box;
+    }
+
+    .white-card2 {
+      background: #fff;
+      padding: 0.5rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      min-height: 150px;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .white-card2.no-scale img {
+  transform: scale(1.8); /* oder dein Wunschwert */
+}
+
+    .white-card2 img {
+      transform: scale(4);
+      transform-origin: center;
+      image-rendering: auto;
+    }
+
+    .chart-card img {
+      height: 100%;       /* nimmt volle Höhe ein */
+      width: auto;        /* behält Seitenverhältnis */
+      object-fit: contain;
+      display: block;
+      transform: scale(4);
+      transform-origin: center;
+      image-rendering: auto;
+    }
+
+    .small-chart img {
+      max-width: 120px;
+      max-height: 120px;
+      transform: scale(2.4);
+      transform-origin: center;
+      image-rendering: auto;
+    }
+
+    .profile-section {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: #fff;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #eee;
+    }
+
+    .profile-section img {
+      width: 120px;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .profile-section table {
+      width: auto;
+    }
+
+    .profile-section table td {
+      padding: 5px 0.75rem;
+      font-size: 1rem;
+      white-space: nowrap;
+      vertical-align: top;
+    }
+
+    .section-title, .section-title-left, .section-title-right {
+      font-weight: bold;
+      font-size: 1rem;
+      margin-top: 1rem;
+      color: #015cb7;
+      text-align: left;
+    }
+
+    .section-title-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 1rem;
+    }
+
+    .section-title-left,
+    .section-title-right {
+      font-weight: bold;
+      font-size: 1rem;
+      color: #015cb7;
+      text-align: left; /* Beide linksbündig innerhalb ihrer Spalte */
+    }
+
+    .divider {
+      height: 2px;
+      background: #46df27;
+      margin: 0.5rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .image-table td {
+      padding: 0 1rem;
+      text-align: left;
+    }
+
+    .narrow-table {
+      width: auto;
+      margin-left: 0;
+    }
+
+
+    .image-table img {
+      width: 90px;
+      height: auto;
+    }
+
+    img.full-width {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* Druckansicht */
+    @media print {
+      body {
+        background: white;
+        color: black;
+        padding: 0.5cm;
+        margin: 0;
+        font-size: 11pt;
+      }
+
+      body::before {
+        display: none;
+      }
+
+      .chart-card {
+          height: 6cm;
+        }
+
+      .wide.card {
+          flex
+        }
+      .narrow-card {
+          flex:1,
+        }
+
+      .chart-card img {
+          height: 100%;
+        }
+
+
+      .container {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-size: 1.2rem;
+      }
+
+      .profile-section {
+        flex-direction: row;
+        padding: 0.3rem;
+        border: none;
+      }
+
+      .divider {
+        background: #999;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .icon-row img:hover {
+        transform: none !important;
+      }
+
+      table, td {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Health Profile</h1>
+
+  <div class="profile-section">
+    <img src="../images/user_pictures/user_picture_health.png" alt="Profile Picture" style="height: 80%;" />
+    <table>
+      <tr><td>Name:</td><td>{{var_name}}</td><td></td><td></td></tr>
+      <tr><td>Birthdate:</td><td>{{var_date_birth}}</td><td>Age:</td><td>{{var_age}}</td></tr>
+      <tr>
+  <td>Birthplace:</td>
+  <td>{{var_place_birth}}</td>
+  <td></td>
+  <td></td>
+</tr>
+
+      <tr><td>Adress:</td><td><div>{{var_street_number}}</div><div>{{city}}</div><div>Germany</div></td><td></td><td></td></tr>
+      
+    </table>
+  </div>
+
+  <div class="section-title-row">
+    <div class="section-title-left">Fitness</div>
+    <div class="section-title-right">Fitnesstype</div>
+  </div>
+  <div class="divider"></div>
+  <div class="image-table icon-row">
+  <div class="white-card2  tall" style="flex:2;"><img src="../images/charts/fitness_level.png" alt="Sleep Chart" /></div>
+  <div class="white-card2  tall no-scale" ><img src="../images/charts/fitness_type.png" alt="Metric 4" /></div>
+  </div>
+
+  <div class="section-title">Preferred activities</div>
+  <div class="divider"></div>
+  <div class="image-table icon-row" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+  <div class="white-card"><img src="../images/icons/{{pa_1}}.png" alt="Metric 1" /></div>
+  <div class="white-card" style="{{var_occ_pa_2}}"><img src="../images/icons/{{pa_2}}.png" alt="Metric 2" style="{{var_occ_pa_2}}"/></div>
+  <div class="white-card" style="{{var_occ_pa_3}}"><img src="../images/icons/{{pa_3}}.png" alt="Metric 3" style="{{var_occ_pa_3}}"/></div>
+  <div class="white-card" style="{{var_occ_pa_4}}"><img src="../images/icons/{{pa_4}}.png" alt="Metric 4" style="{{var_occ_pa_4}}"/></div>
+</div>
+
+<div class="section-title-row">
+  <div class="section-title-left">Sleep</div>
+  <div class="section-title-right">Activity Schedule</div>
+</div>
+<div class="divider"></div>
+
+<div class="image-table icon-row">
+  <div class="white-card chart-card">
+    <img src="../images/charts/sleep_chart.png" alt="Sleep Chart" />
+  </div>
+  <div class="white-card chart-card">
+    <img src="../images/charts/activity_heatmap.png" alt="Activity Schedule" />
+  </div>
+</div>
+<p class="chart-caption">{{var_wake_ups}} Wakeups per Night</p>
+
+
+
+    <div class="section-title">Social</div>
+  <div class="divider"></div>
+  <div class="image-table icon-row">
+  <div class="white-card chart-card">
+    <img src="../images/charts/social_score.png" alt="social_score" />
+  </div>
+  <div class="white-card"><img src="../images/icons/{{var_motivation}}.png" alt="Metric 1" /></div>
+  <div class="white-card" style="{{var_event_dog_true}}"><img src="../images/icons/{{var_event_dog}}.png" alt="Metric 2" style = "{{var_event_dog_true}}" /></div>
+  </div>
+
+  <div class="section-title">Wellness</div>
+  <div class="divider"></div>
+  <div class="image-table icon-row">
+  <div class="white-card chart-card">
+    <img src="../images/charts/wellness_score.png" alt="Wellness score" style="width: 100%;     /* skaliert die Anzeige runter */
+  max-width: 180px; "/>
+  </div>
+</div>
+
+
+</body>
+</html>

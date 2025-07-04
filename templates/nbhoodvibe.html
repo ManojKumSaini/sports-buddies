@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Nklkdjsflsdlisheighborhood Vibe</title>
+    <style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f9f4;
+    color: #333;
+    margin: 0;
+    padding: 2rem;
+  }
+
+  h1 {
+    text-align: center;
+    color: #2e7d32;
+    border-bottom: 2px solid #c8e6c9;
+    padding-bottom: 0.5rem;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 2rem 0;
+  }
+
+  .profile-section {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .profile-section img {
+    border-radius: 8px;
+    border: 2px solid #c8e6c9;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #e8f5e9; /* light greenish background */
+    margin-top: 1rem;
+  }
+
+  td {
+    padding: 0.75rem;
+    border: none; /* removed borders */
+  }
+
+  /* First row bold */
+  tr:first-child td {
+    font-weight: bold;
+    background: #dcedc8;
+  }
+
+  .image-table td {
+    text-align: center;
+    background: #f1f8e9;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 1.5rem 0 0.5rem;
+    color: #388e3c;
+  }
+
+  .divider {
+    height: 4px;
+    background: linear-gradient(to right, #c8e6c9, #a5d6a7);
+    border-radius: 2px;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .icon-row img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+  }
+
+  .icon-row img:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    .profile-section {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-section table {
+      width: 100%;
+    }
+
+    .image-table td img {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+</style>
+
+
+</head>
+<body>
+
+    <h1>Neighbor hood vibe</h1>
+    <img class="main-image" src="{{ var_main_picture }}" alt="picture">
+
+    <p>Name: {{ var_name }}</p>
+    <p>Age: {{ var_age }}</p>
+    <p>Street: {{ var_street }}</p>
+    <p>City: {{ var_city }}</p>
+
+    <img src="{{ var_vibe_picture }}" alt="picture" width="80">
+    <p><i>{{ var_text1 }}</i> <b>{{ var_text2 }}</b> <i>{{ var_text3 }}</i></p>
+
+    <div class="section">
+        <div class="category">{{ var_type1 }}</div>
+        <div class="image-row">
+            <img src="{{ var_image1 }}" alt="picture">
+            <img src="{{ var_image2 }}" alt="picture">
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="category">Musik</div>
+        <div class="image-row">
+            <img src="{{ var_musik1 }}" alt="picture">
+        </div>
+        <div class="category">Sport</div>
+        <div class="image-row">
+            <img src="{{ var_sport1 }}" alt="picture">
+            <img src="{{ var_sport2 }}" alt="picture">
+            <img src="{{ var_sport3 }}" alt="picture">
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="category">Sleeping</div>
+        <div class="image-row">
+            <img src="{{ var_sleeping }}" alt="picture">
+        </div>
+        <div class="category">Working</div>
+        <div class="image-row">
+            <img src="{{ var_working }}" alt="picture">
+        </div>
+    </div>
+
+</body>
+</html>
