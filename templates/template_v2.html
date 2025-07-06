@@ -2,41 +2,83 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Nklkdjsflsdlisheighborhood Vibe</title>
+    <title>Neighborhood Vibe</title>
     <style>
         body {
-            font-family: sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #fdfdfd;
+            margin: 0;
+            padding: 0;
         }
-        .section {
-            border-bottom: 2px solid purple;
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #111;
+            font-size: 2em;
             margin-bottom: 20px;
-            padding-bottom: 10px;
         }
-        .category {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-top: 10px;
+
+        p {
+            margin: 5px 0;
         }
-        .image-row {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .image-row img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-        }
+
         .main-image {
             width: 150px;
             height: 200px;
             object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .vibe {
+            margin: 15px 0;
+        }
+
+        .section {
+            border-bottom: 2px solid purple;
+            margin: 30px 0;
+            padding-bottom: 20px;
+        }
+
+        .category {
+            font-weight: bold;
+            font-size: 1.4em;
+            margin: 20px 0 10px;
+        }
+
+        .image-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .image-row img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #f0f0f0;
+            padding: 5px;
+        }
+
+        i, b {
+            font-size: 1.1em;
         }
     </style>
 </head>
-<body>
 
-    <h1>Neighbor hood vibe</h1>
+<body>
+  <div class="container">
+
+    <h1>Neighborhood Vibe</h1>
     <img class="main-image" src="{{ var_main_picture }}" alt="picture">
 
     <p>Name: {{ var_name }}</p>
@@ -44,8 +86,10 @@
     <p>Street: {{ var_street }}</p>
     <p>City: {{ var_city }}</p>
 
-    <img src="{{ var_vibe_picture }}" alt="picture" width="80">
-    <p><i>{{ var_text1 }}</i> <b>{{ var_text2 }}</b> <i>{{ var_text3 }}</i></p>
+    <div class="vibe">
+        <img src="{{ var_vibe_picture }}" alt="picture" width="80">
+        <p><i>{{ var_text1 }}</i> <b>{{ var_text2 }}</b> <i>{{ var_text3 }}</i></p>
+    </div>
 
     <div class="section">
         <div class="category">{{ var_type1 }}</div>
@@ -60,6 +104,7 @@
         <div class="image-row">
             <img src="{{ var_musik1 }}" alt="picture">
         </div>
+
         <div class="category">Sport</div>
         <div class="image-row">
             <img src="{{ var_sport1 }}" alt="picture">
@@ -73,11 +118,13 @@
         <div class="image-row">
             <img src="{{ var_sleeping }}" alt="picture">
         </div>
+
         <div class="category">Working</div>
         <div class="image-row">
             <img src="{{ var_working }}" alt="picture">
         </div>
     </div>
 
+  </div>
 </body>
 </html>
