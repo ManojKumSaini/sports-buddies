@@ -10,5 +10,6 @@ pymupdf
 python-dateutil
 fastapi
 uvicorn
+weasyprint
 
 

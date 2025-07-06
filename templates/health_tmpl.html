@@ -5,7 +5,9 @@
   <title>Health Profile</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      zoom: 85%; /* entspricht ca. 2x Verkleinern */
+      font-family: 'Lora', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
       background: none;
       color: #2c3e50;
       margin: 0;
@@ -24,7 +26,7 @@
       height: 100%;
       background: url("../images/backgrounds/background_health.png") no-repeat center center;
       background-size: cover;
-      opacity: 0.2;
+      opacity: 0.5;
       z-index: -1;
     }
 
@@ -35,6 +37,7 @@
 
     h1 {
       text-align: center;
+      text-shadow: 3px 3px 3px #ababab;
       font-size: 1.5rem;
       color: #015cb7;
       border-bottom: 1px solid #c8e6c9;
@@ -45,8 +48,13 @@
       background: #fff;
       padding: 0.5rem;
       border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       display: inline-block;
+      transition: box-shadow 0.2s, border 0.2s;
+    }
+    .white-card:hover {
+      border: 2px solid #42a0ed;
+      box-shadow: 0 0 0 4px #e3f2fd;
     }
 
     .image-table.icon-row {
@@ -62,20 +70,31 @@
       align-items: center;
       height: 120px; /* feste Höhe für Gleichstand */
       padding: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
+    }
+    .chart-card:hover {
+      border: 2px solid #42a0ed;
+      box-shadow: 0 0 0 4px #e3f2fd;
     }
 
     .white-card2 {
       background: #fff;
       padding: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
       border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       display: inline-block;
       min-height: 150px;
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    .white-card2:hover {
+      border: 2px solid #42a0ed;
+      background: #68ee2567;
+      box-shadow: 0 0 0 4px #e3f2fd;
     }
 
     .white-card2.no-scale img {
@@ -110,6 +129,7 @@
       display: flex;
       gap: 1rem;
       align-items: flex-start;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       background: #fff;
       padding: 0.5rem;
       border-radius: 6px;
@@ -137,6 +157,7 @@
       font-weight: bold;
       font-size: 1rem;
       margin-top: 1rem;
+      text-shadow: 3px 3px 3px #ababab;
       color: #015cb7;
       text-align: left;
     }
@@ -157,7 +178,7 @@
 
     .divider {
       height: 2px;
-      background: #46df27;
+      background: black;
       margin: 0.5rem 0;
     }
 
@@ -275,10 +296,10 @@
     </table>
   </div>
 
-  <div class="section-title-row">
-    <div class="section-title-left">Fitness</div>
-    <div class="section-title-right">Fitnesstype</div>
-  </div>
+  <div class="section-title-row" style="display: flex; width: 100%;">
+  <div class="section-title-left" style="width: 66.66%;">Fitnesslevel</div>
+  <div class="section-title-right" style="width: 33.33%;">Fitnesstype</div>
+</div>
   <div class="divider"></div>
   <div class="image-table icon-row">
   <div class="white-card2  tall" style="flex:2;"><img src="../images/charts/fitness_level.png" alt="Sleep Chart" /></div>
@@ -288,10 +309,10 @@
   <div class="section-title">Preferred activities</div>
   <div class="divider"></div>
   <div class="image-table icon-row" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-  <div class="white-card"><img src="../images/icons/{{pa_1}}.png" alt="Metric 1" /></div>
-  <div class="white-card" style="{{var_occ_pa_2}}"><img src="../images/icons/{{pa_2}}.png" alt="Metric 2" style="{{var_occ_pa_2}}"/></div>
-  <div class="white-card" style="{{var_occ_pa_3}}"><img src="../images/icons/{{pa_3}}.png" alt="Metric 3" style="{{var_occ_pa_3}}"/></div>
-  <div class="white-card" style="{{var_occ_pa_4}}"><img src="../images/icons/{{pa_4}}.png" alt="Metric 4" style="{{var_occ_pa_4}}"/></div>
+  <div class="white-card"><img src="../images/icons/preferred_activity_{{pa_1}}.png" alt="Metric 1" /></div>
+  <div class="white-card" style="{{var_occ_pa_2}}"><img src="../images/icons/preferred_activity_{{pa_2}}.png" alt="Metric 2" style="{{var_occ_pa_2}}"/></div>
+  <div class="white-card" style="{{var_occ_pa_3}}"><img src="../images/icons/preferred_activity_{{pa_3}}.png" alt="Metric 3" style="{{var_occ_pa_3}}"/></div>
+  <div class="white-card" style="{{var_occ_pa_4}}"><img src="../images/icons/preferred_activity_{{pa_4}}.png" alt="Metric 4" style="{{var_occ_pa_4}}"/></div>
 </div>
 
 <div class="section-title-row">
@@ -312,13 +333,17 @@
 
 
 
-    <div class="section-title">Social</div>
+  <div class="section-title-row" style="display: flex; width: 100%;">
+  <div class="section-title-left" style="width: 60.00%;">Social</div>
+  <div class="section-title-right" style="width:  30.5%;">Motivation: <a style="font-style: italic;">{{var_motivation}}</a></div>
+  <div class="section-title-right" style="width: 11.5%;">{{var_event_dog_title}}</div>
+</div>
   <div class="divider"></div>
   <div class="image-table icon-row">
   <div class="white-card chart-card">
     <img src="../images/charts/social_score.png" alt="social_score" />
   </div>
-  <div class="white-card"><img src="../images/icons/{{var_motivation}}.png" alt="Metric 1" /></div>
+  <div class="white-card"><img src="../images/icons/motivation_type_{{var_motivation}}.png" alt="Metric 1" title="{{var_motivation}}"/></div>
   <div class="white-card" style="{{var_event_dog_true}}"><img src="../images/icons/{{var_event_dog}}.png" alt="Metric 2" style = "{{var_event_dog_true}}" /></div>
   </div>
 

@@ -1,5 +1,4 @@
 import os
-import os
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
 from functions import get_user_number_from_config, data_from_data_sink
@@ -9,64 +8,65 @@ from tkinter import ttk, messagebox
 import pandas as pd
 import os
 
-# CSV-Pfad
-csv_path = os.path.join("data", "secret_info.csv")
-output_path = os.path.join("data", "cur_user_selected.txt")
+# # CSV-Pfad
+# csv_path = os.path.join("data", "secret_info.csv")
+# output_path = os.path.join("data", "cur_user_selected.txt")
 
-# CSV laden
-try:
-    df = pd.read_csv(csv_path)
-except FileNotFoundError:
-    messagebox.showerror("Fehler", f"Datei nicht gefunden: {csv_path}")
-    exit()
+# # CSV laden
+# try:
+#     df = pd.read_csv(csv_path)
+# except FileNotFoundError:
+#     messagebox.showerror("Fehler", f"Datei nicht gefunden: {csv_path}")
+#     exit()
 
-# Prüfen, ob benötigte Spalten existieren
-required_cols = {"first_name","last_name","user_id"}
-if not required_cols.issubset(df.columns):
-    messagebox.showerror("Fehler", f"CSV muss die Spalten {required_cols} enthalten")
-    exit()
+# # Prüfen, ob benötigte Spalten existieren
+# required_cols = {"first_name","last_name","user_id"}
+# if not required_cols.issubset(df.columns):
+#     messagebox.showerror("Fehler", f"CSV muss die Spalten {required_cols} enthalten")
+#     exit()
 
-# Optionen für Dropdown: "Name Secondname"
-name_options = [f"{row['first_name']} {row['last_name']}" for _, row in df.iterrows()]
-name_to_id = {
-    f"{row['first_name']} {row['last_name']}": row["user_id"] for _, row in df.iterrows()
-}
-
-
-
-# Tkinter GUI
-def on_select(event=None):
-    selected = combo.get()
-    user_id = name_to_id.get(selected)
-    num = data_from_data_sink(f"""
-                    SELECT user_number FROM dim_user WHERE user_id = '{user_id}' LIMIT 1;
-                    """)
+# # Optionen für Dropdown: "Name Secondname"
+# name_options = [f"{row['first_name']} {row['last_name']}" for _, row in df.iterrows()]
+# name_to_id = {
+#     f"{row['first_name']} {row['last_name']}": row["user_id"] for _, row in df.iterrows()
+# }
 
 
-    num = num["user_number"][0]
-    if user_id:
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(str(num))
-        messagebox.showinfo("Erfolg", f"user_id '{user_id} num {num}' wurde in cur_user.txt gespeichert.")
-        root.quit()
-    else:
-        messagebox.showwarning("Fehler", "Benutzer nicht gefunden.")
 
-root = tk.Tk()
-root.title("Benutzer auswählen")
+# # Tkinter GUI
+# def on_select(event=None):
+#     selected = combo.get()
+#     user_id = name_to_id.get(selected)
+#     num = data_from_data_sink(f"""
+#                     SELECT user_number FROM dim_user WHERE user_id = '{user_id}' LIMIT 1;
+#                     """)
 
-label = ttk.Label(root, text="Wähle einen Benutzer:")
-label.pack(padx=10, pady=(10, 2))
 
-combo = ttk.Combobox(root, values=name_options, state="readonly", width=40)
-combo.pack(padx=10, pady=5)
-combo.bind("<<ComboboxSelected>>", on_select)
-combo.current(0)  # erste Option vorauswählen
+#     num = num["user_number"][0]
+#     if user_id:
+#         with open(output_path, "w", encoding="utf-8") as f:
+#             f.write(str(num))
+#         messagebox.showinfo("Erfolg", f"user_id '{user_id} num {num}' wurde in cur_user.txt gespeichert.")
+#         root.quit()
+#     else:
+#         messagebox.showwarning("Fehler", "Benutzer nicht gefunden.")
 
-button = ttk.Button(root, text="Bestätigen", command=on_select)
-button.pack(padx=10, pady=(5, 10))
+# root = tk.Tk()
+# root.title("Benutzer auswählen")
 
-root.mainloop()
+# label = ttk.Label(root, text="Wähle einen Benutzer:")
+# label.pack(padx=10, pady=(10, 2))
+
+# combo = ttk.Combobox(root, values=name_options, state="readonly", width=40)
+# combo.pack(padx=10, pady=5)
+# combo.bind("<<ComboboxSelected>>", on_select)
+# combo.current(0)  # erste Option vorauswählen
+
+# button = ttk.Button(root, text="Bestätigen", command=on_select)
+# button.pack(padx=10, pady=(5, 10))
+
+# root.mainloop()
+
 
 
 user = get_user_number_from_config()
