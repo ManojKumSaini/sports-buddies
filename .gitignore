@@ -13,7 +13,7 @@
 
 # gesamte Daten (inkl. Unterordner und Dateien)
 /data/
-
+/tmp/
 
 # Bytecode und temporäres
 __pycache__/
