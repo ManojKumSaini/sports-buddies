@@ -85,9 +85,9 @@ def execute_notebook(notebook_path):
     ep.preprocess(nb, {'metadata': {'path': os.path.dirname(notebook_path)}})
     print(f"✅ Notebook ausgeführt: {notebook_path}")
 
-if "health" in sources:
-    print("run health")
-    execute_notebook("02_aggregation_notebooks/02_health_aggregation.ipynb")
+# if "health" in sources:
+#     print("run health")
+#     execute_notebook("02_aggregation_notebooks/022_health_aggregation.ipynb")
 
 if "strava" in sources:
     print("run strava")
