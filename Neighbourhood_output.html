@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Neighborhood Vibe Profile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fb;
+      color: #2c3e50;
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #004aad;
+      margin-bottom: 2rem;
+    }
+
+    .profile-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .profile-pic {
+      width: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .profile-info h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #004aad;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section h3 {
+      font-size: 1.3rem;
+      color: #004aad;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .top-vibe-box {
+      text-align: center;
+    }
+
+    .top-vibe-box img {
+      width: 120px;
+      margin: 0.5rem 0;
+    }
+
+    .vibe-traits {
+      font-style: italic;
+      color: #555;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .icon-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 1rem;
+    }
+
+    .icon-card {
+      text-align: center;
+      flex: 1 1 30%;
+      max-width: 140px;
+    }
+
+    .icon-card img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #f4f4f4;
+      padding: 0.5rem;
+    }
+
+    .icon-card .tag {
+      display: inline-block;
+      background-color: #e0f0ff;
+      color: #004aad;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .score-bar {
+      background: #e0e7ff;
+      border-radius: 6px;
+      margin: 10px 0;
+      overflow: hidden;
+      height: 24px;
+      display: flex;
+      font-size: 0.85rem;
+    }
+
+    .score-label {
+      flex: 1;
+      padding-left: 10px;
+      line-height: 24px;
+      color: #1a237e;
+    }
+
+    .bar-fill {
+      background: #3f51b5;
+      color: white;
+      padding-left: 10px;
+      height: 100%;
+      line-height: 24px;
+      white-space: nowrap;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Neighborhood Vibe Profile</h1>
+
+    <div class="profile-header">
+      <img src="icons/user_alex.png" alt="User Picture" class="profile-pic" />
+      <div class="profile-info">
+        <h2>Alex Berg</h2>
+        <p>Age: 29</p>
+        <p>Street: Urbanstraße 52</p>
+        <p>City: Berlin</p>
+      </div>
+    </div>
+
+    <div class="section top-vibe-box">
+      <h3>Your Top Vibe: Balanced Berliner</h3>
+      <img src="icons/neighborhood_vibe_balanced_berliner.png" alt="Top Vibe Icon">
+      <p class="vibe-traits">Balanced, Curious, Connected</p>
+    </div>
+
+    <div class="section info-card">
+      <h3>🏨 Recommended Neighborhoods</h3>
+      <ul>
+        
+          <li><strong>Schöneberg</strong>: Schöneberg blends charm, diversity, and balance — lively but never overwhelming. Queer-friendly, leafy, and cultured.</li>
+        
+          <li><strong>Tempelhof</strong>: Tempelhof offers calm and connection — it’s centered, spacious, and socially mixed. Perfect for those who like harmony over hype.</li>
+        
+          <li><strong>Mitte</strong>: Mitte, again, appears here for its centrality — giving a little of everything without too much of anything.</li>
+        
+      </ul>
+    </div>
+
+    <div class="section info-card">
+      <h3>🎧 Your Music Taste</h3>
+      <div class="icon-row">
+        <div class="icon-card"><img src="icons/jazz.png" alt="Genre 1"/><div class="tag">Jazz Purist</div></div>
+        <div class="icon-card"><img src="icons/indie.png" alt="Genre 2"/><div class="tag">Indie Explorer</div></div>
+        <div class="icon-card"><img src="icons/funk.png" alt="Genre 3"/><div class="tag">Funk Lover</div></div>
+      </div>
+    </div>
+
+    <div class="section info-card">
+      <h3>🕒 Listening Style</h3>
+      <div class="icon-row">
+        <div class="icon-card"><img src="icons/late_night.png" alt="Listening 1"/><div class="tag">Late Night</div></div>
+        <div class="icon-card"><img src="icons/weekend_breakfast.png" alt="Listening 2"/><div class="tag">Weekend Breakfast</div></div>
+        <div class="icon-card"><img src="icons/weekday_sundown.png" alt="Listening 3"/><div class="tag">Weekday Sundown</div></div>
+      </div>
+    </div>
+
+    <div class="section info-card">
+      <h3>🎮 Gaming Type</h3>
+      <div class="icon-row">
+        <div class="icon-card"><img src="icons/gamer_mid.png" alt="Gaming" /><div class="tag">Occasional Gamer</div></div>
+      </div>
+    </div>
+
+    <div class="section info-card">
+      <h3>💤 Sleep Type</h3>
+      <div class="icon-row">
+        <div class="icon-card"><img src="icons/sleep_night_owl.png" alt="Sleep" /><div class="tag">Night Owl</div></div>
+      </div>
+    </div>
+
+    <div class="section info-card">
+      <h3>💼 Working Style</h3>
+      <div class="icon-row">
+        <div class="icon-card"><img src="icons/remote_worker.png" alt="Work" /><div class="tag">Remote Worker</div></div>
+      </div>
+    </div>
+
+    <div class="section info-card">
+      <h3>🚶️ Activity Style</h3>
+      <div class="icon-row">
+        <div class="icon-card"><img src="icons/walker_sprinter.png" alt="Walker" /><div class="tag">Sprinter</div></div>
+      </div>
+    </div>
+
+    <div class="section info-card">
+      <h3>💪 Fitness Profile</h3>
+      <div class="icon-row">
+        <div class="icon-card"><img src="icons/strength.png" alt="Strength" /><div class="tag">Strong</div></div>
+        <div class="icon-card"><img src="icons/flexibility.png" alt="Flexibility" /><div class="tag">Flexible</div></div>
+        <div class="icon-card"><img src="icons/relaxation.png" alt="Relaxation" /><div class="tag">Relaxed</div></div>
+        <div class="icon-card"><img src="icons/endurance.png" alt="Endurance" /><div class="tag">Enduring</div></div>
+      </div>
+    </div>
+
+    <div class="section info-card">
+      <h3>📊 Vibe Score Breakdown</h3>
+      
+        <div class="score-bar">
+          <div class="score-label">Balanced Berliner</div>
+          <div class="bar-fill" style="width: 45.0%">45.0%</div>
+        </div>
+      
+        <div class="score-bar">
+          <div class="score-label">Party Explorer</div>
+          <div class="bar-fill" style="width: 30.0%">30.0%</div>
+        </div>
+      
+        <div class="score-bar">
+          <div class="score-label">Mindful Creative</div>
+          <div class="bar-fill" style="width: 25.0%">25.0%</div>
+        </div>
+      
+    </div>
+  </div>
+</body>
+</html>
