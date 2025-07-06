@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Neighborhood Vibe Profile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fb00;
+      color: #2c3e50;
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("../images/backgrounds/neighborhood_bg.png") no-repeat center center;
+      background-size: cover;
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #004aad;
+      margin-bottom: 2rem;
+    }
+
+    .profile-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+      background: #ffffff;
+      padding: 1rem;
+      border-radius: 12px;
+      align-items: flex-start; /* <<< DAS ist entscheidend! */
+      opacity: .9;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .profile-pic {
+      width: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .profile-info h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #004aad;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section h3 {
+      font-size: 1.3rem;
+      color: #004aad;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .top-vibe-box {
+      text-align: center;
+    }
+
+    .top-vibe-box img {
+      width: 120px;
+      margin: 0.5rem 0;
+    }
+
+    .vibe-traits {
+      font-style: italic;
+      color: #555;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .icon-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 1rem;
+    }
+
+    .icon-card {
+      text-align: center;
+      flex: 1 1 30%;
+      max-width: 140px;
+    }
+
+    .icon-card img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #f4f4f4;
+      padding: 0.5rem;
+    }
+
+    .icon-card .tag {
+      display: inline-block;
+      background-color: #e0f0ff;
+      color: #004aad;
+      padding: 4px 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .score-bar {
+      background: #e0e7ff;
+      border-radius: 6px;
+      margin: 10px 0;
+      overflow: hidden;
+      height: 24px;
+      display: flex;
+      font-size: 0.85rem;
+    }
+
+    .score-label {
+      flex: 1;
+      padding-left: 10px;
+      line-height: 24px;
+      color: #1a237e;
+    }
+
+    .bar-fill {
+      background: #3f51b5;
+      color: white;
+      padding-left: 10px;
+      height: 100%;
+      line-height: 24px;
+      white-space: nowrap;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Neighborhood Vibe Profile</h1>
+
+    <div class="profile-header">
+      <img src="{{ var_main_picture }}" alt="User Picture" class="profile-pic" />
+      <div class="profile-info">
+        <h2>{{ var_name }}</h2>
+        <p>Age: {{ var_age }}</p>
+        <p>Street: {{ var_street }}</p>
+        <p>City: {{ var_city }}</p>
+      </div>
+      <div class="section top-vibe-box">
+      <h2 style="text-align: center; display: block;">Top Vibe: <br> {{ top_vibe }}</h2>
+      <img src="{{ var_vibe_picture }}" alt="Top Vibe Icon">
+      <p class="vibe-traits" style="font-style: oblique; font-size: large; ">{{ var_text1 }}, {{ var_text2 }} and {{ var_text3 }}</p>
+    </div>
+    </div>
+
+    
+
+    <div class="section info-card">
+      <h3>🏨 Recommended Neighborhoods</h3>
+      <ul>
+        {% for hood, reason in hood_explanations %}
+          <li><strong>{{ hood }}</strong>:<br> {{ reason }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="section info-card">
+      <h3>🎧 Your Music Taste</h3>
+      <div class="icon-row">
+        <div class="icon-card" {{ genre_1 }}" alt="Genre 1"/><div class="tag" {{ genre_label_1 }}</div></div>
+        <div class="icon-card" {{ genre_2 }}" alt="Genre 2"/><div class="tag" {{ genre_label_2 }}</div></div>
+        <div class="icon-card" {{ genre_3 }}" alt="Genre 3"/><div class="tag" {{ genre_label_3 }}</div></div>
+      </div>
+    </div>
+
+    <div class="section info-card">
+      <h3>🕒 Listening Style</h3>
+      <div class="icon-row">
+        <div class="icon-card" {{ listening_1 }}" alt="Listening 1"/><div class="tag" {{ listening_label_1 }}</div></div>
+        <div class="icon-card" {{ listening_2 }}" alt="Listening 2"/><div class="tag" {{ listening_label_2 }}</div></div>
+        <div class="icon-card" {{ listening_3 }}" alt="Listening 3"/><div class="tag" {{ listening_label_3 }}</div></div>
+      </div>
+    </div>
+
+    <div class="section info-card">
+  <h3>🧩 Lifestyle Types</h3>
+  <div class="icon-row">
+    <div class="icon-card">
+      <img src="{{ gaming_type_icon }}" alt="Gaming" />
+      <div class="tag">{{ gaming_label }}</div>
+    </div>
+    <div class="icon-card">
+      <img src="{{ sleep_type_icon }}" alt="Sleep" />
+      <div class="tag">{{ sleep_label }}</div>
+    </div>
+    <div class="icon-card">
+      <img src="{{ work_type_icon }}" alt="Work" />
+      <div class="tag">{{ work_label }}</div>
+    </div>
+    <div class="icon-card">
+      <img src="{{ walker_type_icon }}" alt="Walker" /><br>
+      <div class="tag">{{ walker_label }} step collector</div>
+    </div>
+  </div>
+</div>
+
+    <div class="section info-card">
+      <h3>💪 Fitness Profile</h3>
+      <div class="icon-row">
+        <div class="icon-card"><img src="{{ fitness_strength_icon }}" alt="Strength" /><div class="tag">{{ fitness_strength_label }}</div></div>
+        <div class="icon-card"><img src="{{ fitness_flexibility_icon }}" alt="Flexibility" /><div class="tag">{{ fitness_flexibility_label }}</div></div>
+        <div class="icon-card"><img src="{{ fitness_relaxation_icon }}" alt="Relaxation" /><div class="tag">{{ fitness_relaxation_label }}</div></div>
+        <div class="icon-card"><img src="{{ fitness_endurance_icon }}" alt="Endurance" /><div class="tag">{{ fitness_endurance_label }}</div></div>
+      </div>
+    </div>
+
+    <div class="section info-card">
+      <h3>📊 Vibe Score Breakdown</h3>
+      {% for vibe, score in scores.items() %}
+        <div class="score-bar">
+          <div class="score-label">{{ vibe }}</div>
+          <div class="bar-fill" style="width: {{ score * 100 }}%">{{ (score * 100)|round(1) }}%</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
