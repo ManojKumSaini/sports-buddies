@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HR Profile - Sebastiano Plaku</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #2c3e50;
+      margin: 0;
+      padding: 1rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('../images/backgrounds/hr_background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      opacity: 0.7; /* Change this value to adjust opacity (0.0 to 1.0) */
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 794px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #eeeeee;
+      border-bottom: 2px solid #72a8aa;
+      margin-bottom: 1rem;
+    }
+    
+    .white-card {
+      background: #ffffff;
+      padding: 0.5rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+
+    .image-table.icon-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: nowrap;
+    }
+
+    .chart-card {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 180px;
+      padding: 0.5rem;
+      box-sizing: border-box;
+    }
+
+    .chart-card img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .profile-section {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: #fff;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #eee;
+    }
+
+    .profile-section img {
+      width: 120px;
+      height: 120px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    .profile-section table {
+      width: auto;
+    }
+
+    .profile-section table td {
+      padding: 5px 0.75rem;
+      font-size: 1rem;
+      vertical-align: top;
+    }
+
+    .section-title, .section-title-left, .section-title-right {
+      font-weight: bold;
+      font-size: 1rem;
+      margin-top: 1rem;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .section-title-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 1rem;
+    }
+
+    .section-title-left,
+    .section-title-right {
+      font-weight: bold;
+      font-size: 1rem;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .divider {
+      height: 2px;
+      background: #72a8aa;
+      margin: 0.5rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    /* Experience Section Styles */
+    .experience-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .experience-type-container {
+      width: 80px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .experience-type-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .experience-details {
+      flex: 1;
+    }
+
+    .experience-years {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #357588;
+    }
+
+    .experience-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .position-job {
+      background: #e3f2fd;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    /* Skills Section Styles */
+    .skills-container {
+      display: flex;
+      gap: 1rem;
+      background: #fff;
+      padding: 0.5rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .top-skills {
+      flex: 1;
+    }
+
+    .skill-item {
+      padding: 0.3rem 0.8rem;
+      background: #f0f8ff;
+      border-radius: 15px;
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    .skills-graph-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .skills-graph-container img {
+      max-width: 250px;
+      max-height: 250px;
+      object-fit: contain;
+    }
+
+    /* Working Type and Stability Styles */
+    .working-type-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .working-type-container img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .working-type-label {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .stability-container {
+      background: #fff;
+      padding: 0.5rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .stability-container img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Technical Skills Styles */
+    .technical-skills-container {
+      background: #fff;
+      padding: 0.5rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .coding-type-container {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .coding-type-container img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+
+    .coding-type-label {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .languages-grid {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .language-box {
+      flex: 1;
+      background: #f0f8ff;
+      padding: 0.5rem;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .experience-type-label {
+      text-align: center;
+      margin-top: 0.2rem;
+      font-size: 0.7rem;
+      font-weight: bold;
+      width: 100%;
+    }
+    
+    /* Print styles */
+    @media print {
+      body {
+        background: white !important;
+        color: black;
+        padding: 0.5cm;
+        margin: 0;
+        font-size: 11pt;
+      }
+
+      .chart-card {
+        height: 6cm;
+      }
+
+      .container {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-size: 1.2rem;
+      }
+
+      .profile-section {
+        flex-direction: row;
+        padding: 0.3rem;
+        border: none;
+      }
+
+      .divider {
+        background: #999;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      table, td {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hex-pattern"></div>
+
+<div class="container">
+  <h1>HR Profile</h1>
+
+  <!-- Profile Header Section -->
+  <div class="profile-section">
+    <img src="{{ user_picture }}" alt="Profile Picture">
+    <table>
+      <tbody>
+        <tr><td>Name:</td><td>{{ name }}</td><td></td><td></td></tr>
+        <tr><td>Age:</td><td>{{ age }}</td><td>Location:</td><td>{{ location }}</td></tr>
+        <tr><td>Current Role:</td><td>{{ current_role }}</td><td></td><td></td></tr>
+        <tr><td>Email:</td><td>{{ email }}</td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Experience Section -->
+  <div class="section-title">Experience</div>
+  <div class="divider"></div>
+  <div class="experience-info">
+    <div class="experience-type-container">
+      <img src="{{ experience_image }}" alt="Experience Type">
+      <div class="experience-type-label">{{ experience_type|title }}</div>
+    </div>
+    <div class="experience-details">
+      <div class="experience-years">{{ experience_years }} Years Experience</div>
+      <div class="experience-roles">
+        {% for position in position_tags %}
+        <div class="position-job">{{ position }}</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills Section -->
+  <div class="section-title">Skills</div>
+  <div class="divider"></div>
+  <div class="skills-container">
+    <div class="top-skills">
+      <h4>Top Skills</h4>
+      {% for skill in top_skills %}
+      <div class="skill-item">{{ skill }}</div>
+      {% endfor %}
+    </div>
+    <div class="skills-graph-container">
+      <img src="{{ skills_graph_image }}" alt="Skills Graph">
+    </div>
+  </div>
+
+  <!-- Working Time Section -->
+  <div class="section-title-row">
+    <div class="section-title-left">Working Time</div>
+    <div class="section-title-right">Working Type</div>
+  </div>
+  <div class="divider"></div>
+  <div class="image-table icon-row">
+    <div class="white-card chart-card">
+      <img src="{{ heatmap_image }}" alt="Working Time Heatmap">
+    </div>
+    <div class="white-card chart-card">
+      <div class="working-type-container">
+        <img src="{{ working_type_image }}" alt="Working Type">
+        <div class="working-type-label">{{ working_type|title }} Type</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Job Stability Score -->
+  <div class="section-title">Job Stability Score</div>
+  <div class="divider"></div>
+  <div class="stability-container">
+    <img src="{{ stability_image }}" alt="Job Stability Score">
+  </div>
+
+  <!-- Technical Skills Section -->
+  <div class="section-title">Technical Skills</div>
+  <div class="divider"></div>
+  <div class="technical-skills-container">
+    <div class="coding-type-container">
+      <img src="{{ coding_type_image }}" alt="Coding Type">
+      <div class="coding-type-label">{{ coding_type|replace('_', ' ')|title }}</div>
+    </div>
+    
+    <div class="languages-grid">
+      {% for skill in programming_skills %}
+      <div class="language-box">
+        <div style="font-weight: bold;">{{ skill }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
